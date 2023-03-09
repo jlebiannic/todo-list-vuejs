@@ -15,10 +15,33 @@ function supprimeTodo(id: number) {
   const index = todos.findIndex((todo) => todo.id === id);
   todos.splice(index, 1);
 }
+
+function cocheTodo(id: number) {
+  const index = todos.findIndex((todo) => todo.id === id);
+  todos[index].coche = !todos[index].coche;
+}
+
+function getTodoNonCoches() {
+  return todos.filter((todo) => !todo.coche);
+}
+
+function getTodoCoches() {
+  return todos.filter((todo) => todo.coche);
+}
 </script>
 
 <template>
   <input type="text" v-model="nouveauTexteTodo" />
   <button @click="ajouteTodo">Ajouter un ToDo</button>
-  <ListPourTodoList :on-suppression-todo="supprimeTodo" :todos="todos"></ListPourTodoList>
+  <ListPourTodoList
+    :on-suppression-todo="supprimeTodo"
+    :todos="getTodoNonCoches()"
+    :on-coche-todo="cocheTodo"
+  ></ListPourTodoList>
+
+  <ListPourTodoList
+    :on-suppression-todo="supprimeTodo"
+    :todos="getTodoCoches()"
+    :on-coche-todo="cocheTodo"
+  ></ListPourTodoList>
 </template>
