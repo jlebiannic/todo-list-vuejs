@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, provide } from "vue";
 import { Todo } from "../../model/Todo";
 import ListPourTodoList from "./ListPourTodoList.vue";
 
@@ -28,20 +28,14 @@ function getTodoNonCoches() {
 function getTodoCoches() {
   return todos.filter((todo) => todo.coche);
 }
+
+provide("onCocheTodo", cocheTodo);
+provide("onSuppressionTodo", supprimeTodo);
 </script>
 
 <template>
   <input type="text" v-model="nouveauTexteTodo" />
   <button @click="ajouteTodo">Ajouter un ToDo</button>
-  <ListPourTodoList
-    :todos="getTodoNonCoches()"
-    @on-suppression-todo="supprimeTodo"
-    @on-coche-todo="cocheTodo"
-  ></ListPourTodoList>
-
-  <ListPourTodoList
-    :todos="getTodoCoches()"
-    @on-suppression-todo="supprimeTodo"
-    @on-coche-todo="cocheTodo"
-  ></ListPourTodoList>
+  <ListPourTodoList :todos="getTodoNonCoches()"></ListPourTodoList>
+  <ListPourTodoList :todos="getTodoCoches()"></ListPourTodoList>
 </template>

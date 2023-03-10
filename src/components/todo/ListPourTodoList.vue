@@ -12,11 +12,7 @@ const props = withDefaults(defineProps<IListPourTodoListProps>(), { todos: () =>
 <template>
   <ul>
     <li v-for="todo in props.todos" :key="todo.texte">
-      <TodoItem
-        @on-coche-todo="($todoId) => $emit('onCocheTodo', $todoId)"
-        @on-suppression-todo="($todoId) => $emit('onSuppressionTodo', $todoId)"
-        :todo="todo"
-      />
+      <TodoItem :todo="todo" />
     </li>
   </ul>
 </template>
