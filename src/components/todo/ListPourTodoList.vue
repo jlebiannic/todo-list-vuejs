@@ -4,8 +4,6 @@ import TodoItem from "./TodoItem.vue";
 
 interface IListPourTodoListProps {
   todos: Todo[];
-  onSuppressionTodo: (id: number) => void;
-  onCocheTodo: (id: number) => void;
 }
 
 const props = withDefaults(defineProps<IListPourTodoListProps>(), { todos: () => [] });
@@ -15,8 +13,8 @@ const props = withDefaults(defineProps<IListPourTodoListProps>(), { todos: () =>
   <ul>
     <li v-for="todo in props.todos" :key="todo.texte">
       <TodoItem
-        :on-coche-todo="props.onCocheTodo"
-        :on-suppression-todo="props.onSuppressionTodo"
+        @on-coche-todo="($todoId) => $emit('onCocheTodo', $todoId)"
+        @on-suppression-todo="($todoId) => $emit('onSuppressionTodo', $todoId)"
         :todo="todo"
       />
     </li>

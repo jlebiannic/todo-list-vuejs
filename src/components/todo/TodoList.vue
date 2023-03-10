@@ -34,14 +34,14 @@ function getTodoCoches() {
   <input type="text" v-model="nouveauTexteTodo" />
   <button @click="ajouteTodo">Ajouter un ToDo</button>
   <ListPourTodoList
-    :on-suppression-todo="supprimeTodo"
     :todos="getTodoNonCoches()"
-    :on-coche-todo="cocheTodo"
+    @on-suppression-todo="supprimeTodo"
+    @on-coche-todo="cocheTodo"
   ></ListPourTodoList>
 
   <ListPourTodoList
-    :on-suppression-todo="supprimeTodo"
     :todos="getTodoCoches()"
-    :on-coche-todo="cocheTodo"
+    @on-suppression-todo="supprimeTodo"
+    @on-coche-todo="cocheTodo"
   ></ListPourTodoList>
 </template>
