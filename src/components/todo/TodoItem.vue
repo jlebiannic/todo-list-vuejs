@@ -12,7 +12,9 @@ const onSuppressionTodo: ((todoId: number) => void) | undefined = inject("onSupp
 </script>
 
 <template>
-  <input type="checkbox" @click="onCocheTodo!(todo.id)" :checked="todo.coche" />
+  <input type="checkbox" @click="onCocheTodo && onCocheTodo(todo.id)" :checked="todo.coche" />
   {{ props.todo.texte }}
-  <span @click="onSuppressionTodo!(todo.id)" style="cursor: pointer">&#128465;</span>
+  <span @click="onSuppressionTodo && onSuppressionTodo(todo.id)" style="cursor: pointer"
+    >&#128465;</span
+  >
 </template>
