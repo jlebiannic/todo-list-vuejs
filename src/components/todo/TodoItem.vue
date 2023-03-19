@@ -14,6 +14,7 @@ const onSuppressionTodo: ((todoId: number) => void) | undefined = inject("onSupp
 <template>
   <input type="checkbox" @click="onCocheTodo && onCocheTodo(todo.id)" :checked="todo.coche" />
   {{ props.todo.texte }}
+  <!-- Icone poubelle -->
   <span @click="onSuppressionTodo && onSuppressionTodo(todo.id)" style="cursor: pointer"
     >&#128465;</span
   >
