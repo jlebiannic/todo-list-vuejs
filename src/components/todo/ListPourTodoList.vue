@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<IListPourTodoListProps>(), { todos: () =>
 
 <template>
   <ul>
-    <li v-for="todo in props.todos" :key="todo.texte">
+    <li v-for="todo in props.todos" :key="todo.id">
       <TodoItem :todo="todo" />
     </li>
   </ul>

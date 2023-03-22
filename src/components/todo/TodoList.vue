@@ -22,18 +22,17 @@ watch(todos, (todos: Todo[]) => {
       getTodoCoches().length
     } faits)`;
   }
+  setFocuOnInput(); 
 });
 
 function ajouteTodo() {
   nouveauTexteTodo.value && todos.push(Todo.createTodo(nouveauTexteTodo.value, todos.length));
   nouveauTexteTodo.value = "";
-  setFocuOnInput();
 }
 
 function supprimeTodo(id: number) {
   const index = todos.findIndex((todo) => todo.id === id);
   todos.splice(index, 1);
-  setFocuOnInput();
 }
 
 function cocheTodo(id: number) {
